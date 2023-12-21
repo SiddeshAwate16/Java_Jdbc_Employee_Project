@@ -1,0 +1,24 @@
+package edu.jsp.view;
+
+import java.util.List;
+import java.util.Scanner;
+
+import edu.jsp.model.Employees;
+
+public class View {
+	
+	public void display(List<Employees> emp) {
+		System.out.println("\n--------------------Welcome--------------\n");
+	
+		System.out.println("1). Add Employee to the DataBase\n" +
+							"2). Search for Employee\n" +
+							"3). Edit Employee details\n" +
+							"4). Delete Employee Details\n" +
+							"5). Display all Employees working in this company\n" +
+							"6). EXIT\n");
+		System.out.println("Enter your choice : ");
+		Scanner sc=new Scanner(System.in);
+		int ch = sc.nextInt();
+	}
+
+}

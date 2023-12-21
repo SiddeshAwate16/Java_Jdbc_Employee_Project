@@ -1,0 +1,67 @@
+package edu.jsp.view;
+
+
+import java.util.Scanner;
+
+import edu.jsp.controller.Controller;
+import edu.jsp.model.Employees;
+
+public class View {
+	
+	static boolean value = true;
+	
+	Controller control=new Controller();
+	
+	Scanner sc=new Scanner(System.in);
+	
+public static void main(String[] args) {
+	View emp=new View();
+	
+	while(View.value) {
+		 emp.display();
+	}
+}
+
+	public void display() {
+		System.out.println("\n----------Welcome-----------\n" + "Enter your choice\n" + 
+								"1.To add employee details\n" + 
+								"2.To delete employee details\n" + 
+								"3.To get all employees details\n" +
+								"4.To get employee by its Id\n" + 
+								"5.To update an employee details");
+	int answer=sc.nextInt();	
+		
+//	switch (answer) {
+//	case 1: {
+//		if(saveEmployees() != null) {
+//			System.out.println("Employees saved.\n");
+//		}else {
+//			System.out.println("Employees not saved");
+//		}
+//		break;
+//	}
+//	case 2:{
+//		for(Employees employee : getEmployees()) {
+//			System.out.println("Employee Id : " + employee.getId());
+//			System.out.println("Employee Name : " + employee.getName());
+//			System.out.println("Employee Gender : " + employee.getGender());
+//			System.out.println("Employee Contact : " + employee.getContact());
+//			System.out.println("Employee Salary : " + employee.getSalary());
+//		}
+//		break;
+//	}
+//	case 3:{
+//		
+//		
+//		
+//	}
+	
+	}
+	}
+		
+	
+
+	
+	
+	
+

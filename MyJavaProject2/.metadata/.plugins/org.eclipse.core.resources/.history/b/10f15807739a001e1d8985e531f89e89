@@ -1,0 +1,67 @@
+package edu.jsp.model;
+
+public class Employees {
+	private int Id;
+	private String name;
+	private String gender;
+	private long contact;
+	private long salary;
+	
+public Employees(int Id,String name,String gender,long contact,long salary) {
+	super();
+	this.Id=Id;
+	this.name=name;
+	this.gender=gender;
+	this.contact=contact;
+	this.salary=salary;
+}
+
+public Employees() {
+	super();
+}
+
+public int getId() {
+	return Id;
+}
+
+public String getName() {
+	return name;
+}
+
+public String getGender() {
+	return gender;
+}
+
+public long getContact() {
+	return contact;
+}
+
+public long getSalary() {
+	return salary;
+}
+
+public void setId(int Id) {
+	this.Id=Id;
+}
+
+public void setName(String name) {
+	this.name=name;
+}
+
+public void setGender(String gender) {
+	this.gender=gender;
+}
+
+public void setContact(long contact) {
+	this.contact=contact;
+}
+
+public void setSalary(long salary) {
+	this.salary=salary;
+}
+
+
+public String toString() {
+	return ("Id : "+Id + "Name of the Employee "+name + "Gender of the Employee : "+gender + "Contact number : "+contact + "Salary : "+salary );
+}
+}

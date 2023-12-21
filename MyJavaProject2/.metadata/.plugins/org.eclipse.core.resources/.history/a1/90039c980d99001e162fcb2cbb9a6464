@@ -1,0 +1,9 @@
+package edu.jsp.controller;
+
+public class EmployeeNotFoundException extends RuntimeException{
+	
+	public EmployeeNotFoundException() {
+		super("Employee don't Exist");
+	}
+
+}

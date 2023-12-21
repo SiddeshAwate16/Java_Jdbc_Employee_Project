@@ -1,0 +1,30 @@
+package edu.jsp.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.jsp.model.Employees;
+
+public class Controller {
+	
+	private List<Employees> employees=new ArrayList<>();
+	
+	public Employees saveEmployees(Employees employee) {
+		if(employee != null) {
+			employees.add(employee);
+			return employee;
+		}else {
+			return null;
+		}
+	}
+	
+	public Employees removeEmployees(Employees employee) {
+		if(employee != null) {
+			for(Employees emp1:employees) {
+				if(employee.getId()==emp1.getId()) {
+					em
+				}
+			}
+		}
+	}
+}
