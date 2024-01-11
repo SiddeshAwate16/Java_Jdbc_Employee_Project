@@ -86,187 +86,149 @@ public class View {
 		double sal=scanner.nextDouble();
 		
 		Employees employee=new Employees(id,name,number,gender,sal);
-		
-		if (control.saveEmployees(employee) != null) {
-			System.out.println("Employee Saved\n");
-		}else {
-			System.out.println("Something Went Wrong!!!....");
-			
-		}
+		control.saveEmployees(employee);
 		
 	}
 	
 	public void getAllEmployees() {
-		if(control.getAllEmployees().isEmpty()){
-			System.out.println("No employees are been registed in");
-			return;
-		}
-		
-		sortedEmployees();
-		
-		for(Employees emp:control.getAllEmployees()) {
-			System.out.println("Employee id= \n"+ emp.getId());
-			System.out.println("Employee Name= \n"+ emp.getName());
-			System.out.println("Employee Salary= \n"+ emp.getSalary());
-			System.out.println("Employee Contact= \n"+ emp.getNumber());
-			System.out.println("Employee Gender= \n"+ emp.getGender());
-			System.out.println("----------------------------------------");
-		}
+		System.out.println("ON WHICH BASIS YOU WANT TO SORT ? \n"+
+				"1. ID \n"+
+				"2. NAME \n"+
+				"3. NUMBER \n"+
+				"4. GENDER \n"+
+				"5. SALARY \n"+
+				"6. EXIT \n");
+	
+	int choice=scanner.nextInt();
+	scanner.nextLine();
+
+	switch (choice) {
+	case 1:{
+		control.sort("ID");
+		break;
 	}
+	case 2:{
+		control.sort("NAME");
+		break;
+	}
+	case 3:{
+		control.sort("NUMBER");
+		break;
+	}
+	case 4:{
+		control.sort("GENDER");
+		break;
+	}
+	case 5:{
+		control.sort("SALARY");
+	}
+	case 6:{
+		
+		return;
+	}
+	default:
+		System.out.println("something went wrong !!!");
+		break;
+	}
+}
 			
 		
 	
 	public void getEmployeeId() {
-		System.out.println("Enter the Id you Want : ");
+		System.out.println("Enter employee Id: ");
 		int id=scanner.nextInt();
-		
-		Employees emp;
-		if((emp=control.searchEmployee(id)) != null) {
-			System.out.println("Employee id= \n"+ emp.getId());
-			System.out.println("Employee Name= \n"+ emp.getName());
-			System.out.println("Employee Salary= \n"+ emp.getSalary());
-			System.out.println("Employee Contact= \n"+ emp.getNumber());
-			System.out.println("Employee Gender= \n"+ emp.getGender());
-			
-		}
-		else {
-			System.out.println("Employee not found");
-		}
+		Employees employee;	
+		control.searchEmployee(id);
 
 		}
 	
 	public void removeEmployee() {
-		System.out.println("Enter Employee Id : ");
+		getAllEmployees();
+		
+		System.out.println("enter emplooyee id \n");
 		int id=scanner.nextInt();
 		scanner.nextLine();
 		
-		System.out.println("Enter Employee Name : ");
-		String name=scanner.next();
-		
-		System.out.println("Enter Employee Number :  ");
-		long number=scanner.nextLong();
-		
-		System.out.println("Enter Employee Gender : ");
-		String gender=scanner.next();
-		
-		System.out.println("Enter Employee Salary : ");
-		double sal=scanner.nextDouble();
-		scanner.nextLine();
-		
-		Employees employee=new Employees(id,name,number,gender,sal);
-		
-		if(control.getAllEmployees() != null) {
-			for(Employees emp1:control.getAllEmployees() ) {
-				if(employee.getId()==emp1.getId()) {
-					if(employee.getName().equalsIgnoreCase(emp1.getName())) {
-						if(employee.getNumber()==emp1.getNumber()) {
-							if(employee.getGender().equalsIgnoreCase(emp1.getGender())) {
-								if(employee.getSalary()==emp1.getSalary()) {
-									control.removeEmployees(employee);
-									System.out.println("Employee delete");
-									return ;
-								}
-							}
-						}
-					}	
-				}else {
-					System.out.println("Employee Not Found!!!");
-				}
-			}
-		}else {
-			System.out.println("Something Went Wrong!!!...");
-		}
+		control.removeEmployees(id);	
+
 		
 	}
 	
 	public void updateEmployee() {
+
+		control.getAllEmployee();
 		
-		getAllEmployees();
+		System.out.println("Enter Employee ID to Upadte Employee :");
+		int eId=scanner.nextInt();
+		scanner.nextLine();
 		
-		System.out.println("Enter the Employee Id you want to update : \n");
-		int Id=scanner.nextInt();
-		
-		if(control.getAllEmployees() != null) {
-			for(Employees emp1:control.getAllEmployees()) {
-				if(Id==emp1.getId()) {
+			System.out.println("WHAT YOU WANT TO UPDATE? \n"+
+						"1.NAME \n"+
+						"2. SALARY \n"+
+						"3. NUMBER \n"+
+						"4. GENDER \n" +
+						"5. UPDATE ALL \n"+
+						"6. EXIT \n");
+				
+					int choice=scanner.nextInt();
 					
-					Employees emp=emp1;
-					
-					System.out.println("Enter What to update : \n"+
-										"1.Id : \n"+
-										"2.Name : \n"+
-										"3. Number : \n"+
-										"4.Gender : \n"+
-										"5.Salary : \n"+
-										"6.Update all");
-					
-					int choice1=scanner.nextInt();
-					scanner.nextLine();
-					
-					switch (choice1) {
-					case 1:{
-						System.out.println("Enter New Id\n");
-						int Id2=scanner.nextInt();
-						 emp.setId(scanner.nextInt());
+					switch (choice) {
+					case 1: {
+						System.out.println("enter employee name \n");
+						String name=scanner.next();		
+						control.updateName(eId, name);
+						System.out.println("Employee Name Updated");
 						break;
 					}
-					case 2:{
-						System.out.println("Enter New Name\n");
-						String name=scanner.nextLine();
-						emp.setName(scanner.nextLine());
+					case 2: {
+						System.out.println("enter employee salary \n");
+						double salary=scanner.nextDouble();		
+						control.updateSalary(eId, salary);
+						System.out.println("Employee salary Updated");
+						break;
+						
+					}
+					case 3: {
+						System.out.println("enter employee contact \n");
+						int number=scanner.nextInt();		
+						control.updateNumber(eId, number);
+						System.out.println("Employee number"
+								+ " Updated");
 						break;
 					}
-					case 3:{
-						System.out.println("Enter New Number :  ");
-						long number=scanner.nextLong();
-						emp.setNumber(scanner.nextLong());
+					case 4: {
+						System.out.println("enter employee contact \n");
+						int gender=scanner.nextInt();		
+						control.updateNumber(eId, gender);
+						System.out.println("Employee gender"
+								+ " Updated");
 						break;
 					}
-					case 4:{
-						System.out.println("Enter New Gender : ");
-						String gender=scanner.next();
-						emp.setGender(scanner.nextLine());
+					case 5: {
+						System.out.println("enter employee name \n");
+						String name=scanner.next();	
+						System.out.println("enter employee SALARY \n");
+						int salary=scanner.nextInt();
+						System.out.println("enter employee number \n");
+						int number=scanner.nextInt();
+						System.out.println("enter employee gender \n");
+						int gender=scanner.nextInt();
+						control.updateAll(eId, name, number, name, salary);
+						System.out.println("Employee Name Updated");
 						break;
 					}
-					case 5:{
-						System.out.println("Enter New Salary : ");
-						double sal=scanner.nextDouble();
-						emp.setSalary(scanner.nextDouble());
+					case 6: {
+						
+					value=false;
 						break;
 					}
-					case 6:{
-						System.out.println("Enter Employee Id : ");
-						int id1=scanner.nextInt();
-						scanner.nextLine();
-						
-						System.out.println("Enter Employee Name : ");
-						String name=scanner.next();
-						
-						System.out.println("Enter Employee Number :  ");
-						long number=scanner.nextLong();
-						
-						System.out.println("Enter Employee Gender : ");
-						String gender=scanner.next();
-						
-						System.out.println("Enter Employee Salary : ");
-						double sal=scanner.nextDouble();
-						scanner.nextLine();
-						
-						emp.setId(id1);
-						emp.setName(name);
-						emp.setNumber(number);
-						emp.setGender(gender);
-						emp.setSalary(sal); 
-					}
-					System.out.println("Updated");
-					}
-					
-				}else {
-					System.out.println("Employee Not Found");
-				}
-			}
-			
-		}	
+					default:
+						System.out.println("Error");
+										
+				} 
+
+
+
 		
 	}
 	
@@ -284,19 +246,19 @@ public class View {
 		
 		switch (choice) {
 		case 1:
-			 control.sortedEmployees(new SortById());
+			 control.sort("id");
 			break;
 		case 2:
-			control.sortedEmployees(new SortByName());
+			control.sort("name");
 			break;
 		case 3:
-			control.sortedEmployees(new SortByNumber());
+			control.sort("number");
 			break;
 		case 4:
-			control.sortedEmployees(new SortByGender());
+			control.sort("gender");
 			break;
 		case 5:
-			control.sortedEmployees(new SortBySal());
+			control.sort("salary");
 			break;
 
 		default: System.out.println("Invalid Sorting Choice");
